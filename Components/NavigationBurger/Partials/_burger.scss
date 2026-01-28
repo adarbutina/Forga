@@ -1,0 +1,21 @@
+.burger {
+  align-items: center;
+  cursor: pointer;
+  display: inline-flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-inline-end: var(--flow-space);
+  position: relative;
+
+  &::after {
+    block-size: 3rem;
+    content: '';
+    display: inline-block;
+    inline-size: 3rem;
+    inset-block-start: 50%;
+    inset-inline-start: 50%;
+    position: absolute;
+    translate: -50% -50%;
+  }
+}
+

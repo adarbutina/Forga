@@ -1,0 +1,96 @@
+flynt-component[name='ListIcons'] {
+  .list {
+    --grid-columns: 1;
+    display: grid;
+    gap: var(--flow-space);
+    grid-template-columns: repeat(var(--grid-columns), 1fr);
+    list-style: none;
+
+    &[data-card='true'] {
+      gap: 0;
+    }
+
+    &[data-max-columns='2'],
+    &[data-max-columns='3'],
+    &[data-max-columns='4'] {
+      @media (min-width: $breakpoint-tablet) {
+        --grid-columns: 2;
+      }
+    }
+
+    &[data-max-columns='3'] {
+      @media (min-width: $breakpoint-tablet-horizontal) {
+        --grid-columns: 3;
+      }
+    }
+
+    &[data-max-columns='4'] {
+      @media (min-width: $breakpoint-tablet-horizontal) {
+        --grid-columns: 4;
+      }
+    }
+
+    &__item {
+      --item-background-opacity: 0;
+      --item-background-scale: 1;
+      --item-text-color: var(--color-text);
+      color: var(--item-text-color);
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      transition: color .2s ease-in-out;
+
+      &:hover {
+        --item-background-opacity: 1;
+        --item-background-scale: 1.1;
+        --item-text-color: var(--color-background);
+      }
+
+      &:before {
+        background-color: var(--color-brand);
+        content: '';
+        inset: 0;
+        opacity: var(--item-background-opacity);
+        position: absolute;
+        transform: scale(var(--item-background-scale));
+        transition: opacity .15s ease-in-out 0s, transform .45s cubic-bezier(.85, 0, .15, 1);
+        z-index: 1;
+      }
+    }
+
+    &__link {
+      inset: 0;
+      position: absolute;
+      text-decoration: none;
+      z-index: 1;
+    }
+
+    &__figure {
+      --icon-size: 48px;
+      align-items: center;
+      block-size: var(--icon-size);
+      display: flex;
+      inline-size: var(--icon-size);
+      justify-content: center;
+      z-index: 2;
+    }
+
+    &__content {
+      flex-grow: 1;
+      padding-inline-end: var(--flow-space);
+      z-index: 2;
+    }
+  }
+
+  [data-icon-size='medium'] {
+    .list__figure {
+      --icon-size: 96px;
+    }
+  }
+
+  [data-icon-size='large'] {
+    .list__figure {
+      --icon-size: 144px;
+    }
+  }
+}

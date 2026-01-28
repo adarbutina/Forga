@@ -1,0 +1,31 @@
+flynt-component[name='GridPostsLatest'] {
+  .grid {
+    --grid-columns: 2;
+    column-gap: var(--flow-space);
+    display: grid;
+    grid-template-columns: repeat(var(--grid-columns), 1fr);
+    list-style: none;
+    row-gap: calc(var(--flow-space) * 2);
+
+    &[data-max-columns='2'],
+    &[data-max-columns='3'],
+    &[data-max-columns='4'] {
+      @media (min-width: $breakpoint-tablet) {
+        --grid-columns: 2;
+      }
+    }
+
+    &[data-max-columns='3'],
+    &[data-max-columns='4'] {
+      @media (min-width: $breakpoint-tablet-horizontal) {
+        --grid-columns: 3;
+      }
+    }
+
+    &[data-max-columns='4'] {
+      @media (min-width: $breakpoint-desktop) {
+        --grid-columns: 4;
+      }
+    }
+  }
+}

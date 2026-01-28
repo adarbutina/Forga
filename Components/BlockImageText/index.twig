@@ -1,0 +1,37 @@
+<flynt-component name="BlockImageText" {{- not options.noComponentSpacing ? ' class="componentSpacing"' }} {{- options.theme ? ' data-theme=' ~ options.theme }}>
+  <div class="container" data-image-position="{{ imagePosition }}">
+    {% if image and image.src %}
+      <figure class="figure">
+        {% if image.post_mime_type == 'image/svg+xml' %}
+          <img
+            class="figure-image-svg lazyload"
+            src="{{ placeholderImage(image.width, image.height, 'rgba(125, 125, 125, 0.1)') }}"
+            data-src="{{ image.src }}"
+            width="{{ image.width }}"
+            height="{{ image.height }}"
+            alt="{{ image.alt|e }}">
+        {% else %}
+          <img
+            class="figure-image lazyload"
+            src="{{ image.src|towebp|resizeDynamic(768) }}"
+            width="{{ image.width }}"
+            height="{{ image.height }}"
+            srcset="{{ placeholderImage(image.width, image.height, 'rgba(125, 125, 125, 0.1)') }}"
+            data-srcset="
+              {{- image.src|towebp|resizeDynamic(1920) }} 1920w,
+              {{- image.src|towebp|resizeDynamic(1600) }} 1600w,
+              {{- image.src|towebp|resizeDynamic(1440) }} 1440w,
+              {{- image.src|towebp|resizeDynamic(1280) }} 1280w,
+              {{- image.src|towebp|resizeDynamic(1024) }} 1024w,
+              {{- image.src|towebp|resizeDynamic(768) }} 768w,
+              {{- image.src|towebp|resizeDynamic(640) }} 640w"
+            data-sizes="auto"
+            alt="{{ image.alt|e }}">
+        {% endif %}
+      </figure>
+    {% endif %}
+    <div class="content">
+      {{ contentHtml|e('wp_kses_post') }}
+    </div>
+  </div>
+</flynt-component>

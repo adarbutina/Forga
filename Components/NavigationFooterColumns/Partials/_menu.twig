@@ -1,0 +1,16 @@
+<ul class="menu">
+  {% for item in items %}
+    <li class="menu-item">
+      <div class="menu-title h5">{{ item.title }}</div>
+      {% if item.children %}
+        <ul class="menu-children">
+          {% for child in item.children %}
+            <li class="menu-item">
+              <a class="menu-link" href="{{ child.url|e('esc_url') }}" {{- child.is_external or child.is_target_blank ? ' target="_blank" rel="noopener noreferrer"' }}>{{ child.title }}</a>
+            </li>
+          {% endfor %}
+        </ul>
+      {% endif %}
+    </li>
+  {% endfor %}
+</ul>

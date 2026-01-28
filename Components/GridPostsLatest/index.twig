@@ -1,0 +1,18 @@
+{% if posts|length > 0 %}
+  <flynt-component name="GridPostsLatest" {{- not options.noComponentSpacing ? ' class="componentSpacing"' }} {{- options.theme ? ' data-theme=' ~ options.theme }}>
+    <div class="container" data-flow="content">
+      {% if preContentHtml %}
+        <div class="preContent">
+          {{ preContentHtml|e('wp_kses_post') }}
+        </div>
+      {% endif %}
+      <ul class="grid" data-max-columns="{{ options.maxColumns }}">
+        {% for post in posts %}
+          <li class="grid-item">
+            {{ renderComponent('CardPost', {post: post}) }}
+          </li>
+        {% endfor %}
+      </ul>
+    </div>
+  </flynt-component>
+{% endif %}

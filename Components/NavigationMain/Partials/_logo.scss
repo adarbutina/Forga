@@ -1,0 +1,11 @@
+.logo {
+  color: currentColor;
+  display: inline-block;
+  flex-shrink: 0;
+  text-decoration: none;
+
+  &-image {
+    block-size: 2.25rem;
+    inline-size: auto;
+  }
+}

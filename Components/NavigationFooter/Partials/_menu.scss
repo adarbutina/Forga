@@ -1,0 +1,14 @@
+.menu {
+  display: flex;
+  flex-wrap: wrap;
+  list-style: none;
+
+  &-item:not(:last-child) {
+    margin-inline-end: var(--flow-space);
+  }
+
+  &-link {
+    color: currentColor;
+    text-decoration: none;
+  }
+}

@@ -1,0 +1,26 @@
+<flynt-component name="SliderPosts" load:on="visible" {{- not options.noComponentSpacing ? ' class="componentSpacing"' }} {{- options.theme ? ' data-theme=' ~ options.theme }} data-max-columns="{{ options.maxColumns }}">
+  <div class="container" data-flow="content">
+    {% if preContentHtml %}
+      <div class="preContent" data-size="wide">
+        {{ preContentHtml|e('wp_kses_post') }}
+      </div>
+    {% endif %}
+    {% if posts|length > 0 %}
+      <div class="swiper-container slider" data-ref="slider">
+        <ul class="swiper-wrapper">
+          {% for post in posts %}
+            <li class="swiper-slide slider-slide">
+              {{ renderComponent('CardPost', {post: post}) }}
+            </li>
+          {% endfor %}
+        </ul>
+        <button type="button" class="slider-button slider-button--prev" data-ref="prev" aria-label="{{ labels.prevSlideMessage|e }}">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m15 18-6-6 6-6"/></svg>
+        </button>
+        <button type="button" class="slider-button slider-button--next" data-ref="next" aria-label="{{ labels.nextSlideMessage|e }}">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg>
+        </button>
+      </div>
+    {% endif %}
+  </div>
+</flynt-component>

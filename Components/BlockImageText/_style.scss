@@ -1,0 +1,35 @@
+flynt-component[name='BlockImageText'] {
+  @media (min-width: $breakpoint-tablet-horizontal) {
+    .container {
+      align-items: center;
+      display: flex;
+      gap: var(--component-spacing);
+      justify-content: space-around;
+
+      > * {
+        flex-basis: 50%;
+        margin-block-start: 0;
+      }
+
+      &[data-image-position='left'] {
+        flex-direction: row;
+      }
+
+      &[data-image-position='right'] {
+        flex-direction: row-reverse;
+      }
+    }
+  }
+
+  .figure {
+    block-size: auto;
+    inline-size: 100%;
+    overflow: hidden;
+
+    &-image {
+      block-size: 100%;
+      inline-size: 100%;
+      object-fit: cover;
+    }
+  }
+}

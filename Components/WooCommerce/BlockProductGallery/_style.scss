@@ -1,0 +1,7 @@
+flynt-component[name='BlockProductGallery'] {
+  flynt-component[name='SliderImageGallery'] {
+    > .container {
+      padding-inline: 0;
+    }
+  }
+}

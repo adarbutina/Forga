@@ -1,0 +1,30 @@
+<flynt-component name="CardPost">
+  <a class="link" href="{{ link|e('esc_url') }}">
+    {% if thumbnail and thumbnail.src %}
+      <figure class="figure">
+        <img
+          class="figure-image lazyload"
+          src="{{ thumbnail.src|towebp|resizeDynamic(768) }}"
+          width="768"
+          height="{{ (768 / thumbnail.aspect)|round }}"
+          alt="{{ thumbnail.alt|e }}"
+          srcset="{{ placeholderImage(768, (768 / thumbnail.aspect)|round, 'rgba(125, 125, 125, 0.1)') }}"
+          data-srcset="
+            {{- thumbnail.src|towebp|resizeDynamic(1920) }} 1920w,
+            {{- thumbnail.src|towebp|resizeDynamic(1600) }} 1600w,
+            {{- thumbnail.src|towebp|resizeDynamic(1440) }} 1440w,
+            {{- thumbnail.src|towebp|resizeDynamic(1280) }} 1280w,
+            {{- thumbnail.src|towebp|resizeDynamic(1024) }} 1024w,
+            {{- thumbnail.src|towebp|resizeDynamic(768) }} 768w,
+            {{- thumbnail.src|towebp|resizeDynamic(480) }} 480w"
+          data-sizes="auto">
+      </figure>
+    {% endif %}
+    <div class="content">
+      <div class="title h3">{{ title }}</div>
+      {# {% if excerpt %}
+        <div class="excerpt">{{ excerpt }}</div>
+      {% endif %} #}
+    </div>
+  </a>
+</flynt-component>

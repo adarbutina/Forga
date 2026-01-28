@@ -1,0 +1,20 @@
+.menu {
+  display: grid;
+  gap: calc(var(--flow-space) * 2);
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  list-style: none;
+  padding-block: calc(var(--component-spacing) / 2);
+
+  &-link {
+    color: currentColor;
+    text-decoration: none;
+  }
+
+  &-children {
+    list-style: none;
+
+    .menu-item {
+      padding-block: .125rem;
+    }
+  }
+}

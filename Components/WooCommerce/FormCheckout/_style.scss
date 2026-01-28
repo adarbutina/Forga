@@ -1,0 +1,10 @@
+flynt-component[name='FormCheckout'] {
+  .form {
+    display: grid;
+    gap: calc(var(--component-spacing) / 2);
+
+    @media (min-width: $breakpoint-tablet-horizontal) {
+      grid-template-columns: 1fr 400px;
+    }
+  }
+}

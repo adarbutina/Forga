@@ -1,0 +1,13 @@
+<flynt-component name="GridImages" {{- not options.noComponentSpacing ? ' class="componentSpacing"' }} {{- options.theme ? ' data-theme=' ~ options.theme }} data-max-columns="{{ options.maxColumns }}">
+  <div class="container">
+    <ul class="grid">
+      {% for image in images|filter(image => image.src) %}
+        <li class="grid-item">
+          <figure class="grid-figure">
+            <img class="grid-figure-image lazyload" data-src="{{ image.src }}" width="{{ image.width }}" height="{{ image.height }}" alt="{{ image.alt }}">
+          </figure>
+        </li>
+      {% endfor %}
+    </ul>
+  </div>
+</flynt-component>

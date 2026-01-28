@@ -1,0 +1,5 @@
+<flynt-component name="BlockProductGallery" load:on="visible">
+  {% if images|length > 0 %}
+    {{ renderComponent('SliderImageGallery', {images: images, options: {noComponentSpacing: true}}) }}
+  {% endif %}
+</flynt-component>

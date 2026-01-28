@@ -1,0 +1,13 @@
+<flynt-component name="FormContactForm7" {{- not noComponentSpacing ? 'class="componentSpacing"' }} {{ options.theme ? 'data-theme=' ~ options.theme }}>
+  <div class="container">
+    {% if preContentHtml %}
+      <div class="preContent">
+        {{ preContentHtml|e('wp_kses_post') }}
+      </div>
+    {% endif %}
+    <div class="form">
+      {% set form_shortcode = '[contact-form-7 id="' ~ formId ~ '"]' %}
+      {{ form_shortcode|shortcodes }}
+    </div>
+  </div>
+</flynt-component>

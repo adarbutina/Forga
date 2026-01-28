@@ -1,0 +1,5 @@
+{% if posts|length > 0 %}
+  <flynt-component name="BlockProductUpSells">
+    {{ renderComponent('SliderProducts', {posts: posts, preContentHtml: preContentHtml, options: {maxColumns: 4}}) }}
+  </flynt-component>
+{% endif %}

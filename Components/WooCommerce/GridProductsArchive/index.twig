@@ -1,0 +1,27 @@
+<flynt-component name="GridProductsArchive" load:on="visible" {{- options.theme ? ' data-theme=' ~ options.theme }}>
+  <div class="container" data-flow="layout">
+    <div class="preContent" data-size="narrow">
+      <h1 class="h2">{{ function('woocommerce_page_title') }}</h1>
+      {% if isShop %}
+        {{ preContentHtml|e('wp_kses_post') }}
+      {% else %}
+        {% do action('woocommerce_archive_description') %}
+      {% endif %}
+    </div>
+
+    {% if posts|length > 0 %}
+      <ul class="grid" data-ref="products" data-max-columns="{{ options.maxColumns }}">
+        {% for post in posts %}
+          <li class="grid-item">
+            {{ renderComponent('CardProduct', {post: post, options: {card: card}}) }}
+          </li>
+        {% endfor %}
+      </ul>
+    {% endif %}
+
+    {% set pagination = posts.pagination %}
+    {% if pagination.pages %}
+      {% include 'Partials/pagination.twig' %}
+    {% endif %}
+  </div>
+</flynt-component>

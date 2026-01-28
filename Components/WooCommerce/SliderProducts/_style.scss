@@ -1,0 +1,82 @@
+flynt-component[name='SliderProducts'] {
+  --slider-columns: 2;
+  --slider-gap: .75rem;
+
+  &[data-max-columns='3'],
+  &[data-max-columns='4'] {
+    @media (min-width: $breakpoint-tablet) {
+      --slider-columns: 3;
+    }
+  }
+
+  &[data-max-columns='4'] {
+    @media (min-width: $breakpoint-tablet-horizontal) {
+      --slider-columns: 4;
+    }
+  }
+
+  .slider {
+    overflow: hidden;
+    position: relative;
+
+    .swiper-wrapper {
+      display: flex;
+      list-style: none;
+    }
+
+    &-slide {
+      flex: 0 0 calc((100% - var(--slider-gap) * (var(--slider-columns) - 1)) / var(--slider-columns));
+      margin-inline-end: var(--slider-gap);
+
+      &:last-child {
+        margin-inline-end: 0;
+      }
+    }
+
+    &-button {
+      align-items: center;
+      background-color: var(--color-background);
+      block-size: 2.5rem;
+      border-radius: 9999px;
+      border: 1px solid currentColor;
+      cursor: pointer;
+      display: flex;
+      inline-size: 2.5rem;
+      inset-block-start: 50%;
+      justify-content: center;
+      margin-block-start: 0;
+      position: absolute;
+      translate: (0 -50%);
+      z-index: 10;
+
+      &.swiper-button-disabled {
+        visibility: hidden;
+      }
+
+      &--prev {
+        inset-inline-start: var(--flow-space);
+
+        i {
+          margin-inline-end: 2px;
+        }
+      }
+
+      &--next {
+        inset-inline-end: var(--flow-space);
+
+        i {
+          margin-inline-start: 2px;
+        }
+      }
+
+      .icon {
+        block-size: .75rem;
+        inline-size: .75rem;
+      }
+    }
+  }
+
+  flynt-component[name='CardProduct'] {
+    block-size: 100%;
+  }
+}

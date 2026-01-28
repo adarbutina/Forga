@@ -1,0 +1,18 @@
+<flynt-component name="GridPostsArchive" class="componentSpacing">
+  <div class="container" data-flow="layout">
+    <div class="preContent">
+      <h1 class="title">{{ title }}</h1>
+      {% set html = isHome ? preContentHtml : description %}
+      {{ html|e('wp_kses_post') }}
+    </div>
+    {% if posts %}
+      <ul class="grid" data-max-columns="{{ options.maxColumns }}" data-ref="posts">
+        {% for post in posts %}
+          <li class="grid-item">
+            {{ renderComponent('CardPost', {post: post}) }}
+          </li>
+        {% endfor %}
+      </ul>
+    {% endif %}
+  </div>
+</flynt-component>

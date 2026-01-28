@@ -1,0 +1,19 @@
+/dist/
+/node_modules/
+
+### Composer ###
+composer.phar
+/vendor/
+
+### OSX ###
+# General
+.DS_Store
+.AppleDouble
+.LSOverride
+
+### VisualStudioCode ###
+/.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json

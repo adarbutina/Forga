@@ -1,0 +1,15 @@
+{% extends 'templates/_document.twig' %}
+
+{% block content %}
+  <article>
+    {{ renderComponent('BlockPostHeader', {post: post}) }}
+    <section class="componentSpacing">
+      <div class="container">
+        <div class="content" data-size="narrow" data-align="center">
+          {{ post.content|e('wp_kses_post') }}
+        </div>
+      </div>
+    </section>
+  </article>
+  {{ renderComponent('GridPostsLatest', {taxonomies: post.categories(), options: {maxColumns: 3}}) }}
+{% endblock %}

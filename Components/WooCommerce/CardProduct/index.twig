@@ -1,0 +1,19 @@
+<flynt-component name="CardProduct" load:on="visible" class="boxPadding boxBorder">
+  <a class="link" href="{{ link|e('esc_url') }}">
+    {% if thumbnail and thumbnail.src %}
+      <figure class="figure">
+        <img
+          class="figure-image lazyload"
+          src="{{ placeholderImage(768, 512, 'rgba(125, 125, 125, 0.1)') }}"
+          data-src="{{ thumbnail.src|towebp|resizeDynamic(768) }}"
+          width="768"
+          height="512"
+          alt="{{ thumbnail.alt|e }}">
+      </figure>
+    {% endif %}
+    <div class="content">
+      <div class="title">{{ title }}</div>
+      <div class="price">{{ priceHtml }}</div>
+    </div>
+  </a>
+</flynt-component>

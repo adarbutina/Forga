@@ -1,0 +1,12 @@
+flynt-component[name='BlockProductPrice'] {
+  margin-block: .5rem;
+
+  del {
+    color: var(--color-text-muted);
+  }
+
+  ins {
+    color: var(--color-danger);
+    text-decoration: none;
+  }
+}

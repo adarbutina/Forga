@@ -1,0 +1,10 @@
+<flynt-component name="NavigationMain" load:on="idle" load:on:media="(min-width: 1024px)">
+  <nav aria-label="{{ labels.navigationAriaLabel }}">
+    <div class="container">
+      {% include 'Partials/_logo.twig' with {logo: logo, site: site} only %}
+      {% if menu.items|length > 0 %}
+        {% include 'Partials/_menu.twig' with {items: menu.items} %}
+      {% endif %}
+    </div>
+  </nav>
+</flynt-component>

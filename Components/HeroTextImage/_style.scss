@@ -1,0 +1,60 @@
+flynt-component[name='HeroTextImage'] {
+  overflow-x: hidden;
+
+  .container {
+    @media (min-width: $breakpoint-tablet-horizontal) {
+      display: flex;
+      gap: var(--flow-space);
+    }
+
+    > * {
+      block-size: 100%;
+      flex: 1;
+      margin-inline: auto;
+      max-inline-size: var(--content-max-width);
+
+      @media (min-width: $breakpoint-tablet-horizontal) {
+        max-inline-size: initial;
+      }
+    }
+  }
+
+  .content {
+    @media (min-width: $breakpoint-tablet-horizontal) {
+      align-self: center;
+      flex-basis: 25%;
+      flex-shrink: 0;
+    }
+  }
+
+  .figure {
+    block-size: auto;
+    inline-size: 100%;
+    margin-block-start: var(--flow-space);
+    overflow: hidden;
+
+    @media (min-width: $breakpoint-tablet-horizontal) {
+      margin-block-start: 0;
+    }
+
+    &-image {
+      block-size: 100%;
+      inline-size: 100%;
+      object-fit: contain;
+    }
+  }
+
+  [data-image-position='left'] {
+    flex-direction: row-reverse;
+  }
+
+  [data-image-position='right'] {
+    flex-direction: row;
+
+    .content {
+      @media (min-width: $breakpoint-tablet-horizontal) {
+        margin-inline: auto 0;
+      }
+    }
+  }
+}

@@ -1,0 +1,60 @@
+<flynt-component name="SliderImageGallery" load:on="visible" {{- not options.noComponentSpacing ? ' class="componentSpacing"' }} {{- options.theme ? ' data-theme=' ~ options.theme }}>
+  <div class="container" data-flow="layout">
+    {% if preContentHtml %}
+      <div class="preContent">
+        {{ preContentHtml|e('wp_kses_post') }}
+      </div>
+    {% endif %}
+    {% if images|length > 0 %}
+      <div class="sliders">
+        <div class="swiper-container sliderMain" data-ref="sliderMain" data-slider="main">
+          <ul class="swiper-wrapper">
+            {% for image in images|filter(image => image.src) %}
+              <li class="swiper-slide sliderMain-slide">
+                <figure class="figure">
+                  <img
+                    class="figure-image"
+                    src="{{ image.src|towebp|resizeDynamic(768) }}"
+                    srcset="
+                      {{- image.src|towebp|resizeDynamic(2560) }} 2560w,
+                      {{- image.src|towebp|resizeDynamic(1920) }} 1920w,
+                      {{- image.src|towebp|resizeDynamic(1600) }} 1600w,
+                      {{- image.src|towebp|resizeDynamic(1440) }} 1440w,
+                      {{- image.src|towebp|resizeDynamic(1280) }} 1280w,
+                      {{- image.src|towebp|resizeDynamic(1024) }} 1024w,
+                      {{- image.src|towebp|resizeDynamic(768) }} 768w,
+                      {{- image.src|towebp|resizeDynamic(640) }} 640w"
+                    sizes="100vw"
+                    width="768"
+                    height="512"
+                    loading="{{ loop.index == 1 ? 'eager' : 'lazy' }}"
+                    fetchpriority="{{ loop.index == 1 ? 'high' : 'auto' }}"
+                    alt="{{ image.alt|e }}">
+                </figure>
+              </li>
+            {% endfor %}
+          </ul>
+          {% include 'Partials/_navigation.twig' %}
+        </div>
+        {% if images|length > 1 %}
+          <div class="swiper-container sliderThumb" data-ref="sliderThumb" data-slider="thumb">
+            <ul class="swiper-wrapper">
+              {% for image in images %}
+                <li class="swiper-slide sliderThumb-slide" style="width: {{ (64 * image.aspect)|round }}px">
+                  <figure class="figure">
+                    <img class="figure-image lazyload"
+                      src="{{ image.src|towebp|resizeDynamic(64) }}"
+                      width="{{ (64 * image.aspect)|round }}"
+                      height="64"
+                      alt="{{ image.alt|e }}">
+                  </figure>
+                </li>
+              {% endfor %}
+            </ul>
+          </div>
+        {% endif %}
+        {% include 'Partials/_pagination.twig' %}
+      </div>
+    {% endif %}
+  </div>
+</flynt-component>

@@ -1,0 +1,41 @@
+flynt-component[name='GridImageText'] {
+  .grid {
+    --grid-columns: 1;
+    display: grid;
+    grid-template-columns: repeat(var(--grid-columns), 1fr);
+    list-style: none;
+
+    &[data-max-columns='2'],
+    &[data-max-columns='3'],
+    &[data-max-columns='4'] {
+      @media (min-width: $breakpoint-tablet) {
+        --grid-columns: 2;
+      }
+    }
+
+    &[data-max-columns='3'],
+    &[data-max-columns='4'] {
+      @media (min-width: $breakpoint-tablet-horizontal) {
+        --grid-columns: 3;
+      }
+    }
+
+    &[data-max-columns='4'] {
+      @media (min-width: $breakpoint-desktop) {
+        --grid-columns: 4;
+      }
+    }
+
+    &-figure {
+      block-size: auto;
+      inline-size: 100%;
+      overflow: hidden;
+
+      &-image {
+        block-size: 100%;
+        inline-size: 100%;
+        object-fit: cover;
+      }
+    }
+  }
+}

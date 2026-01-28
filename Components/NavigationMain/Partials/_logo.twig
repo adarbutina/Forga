@@ -1,0 +1,13 @@
+<a class="logo" href="{{ site.link|e('esc_url') }}">
+  {% if logo %}
+    <img
+      class="logo-image"
+      src="{{ logo.src }}"
+      width="{{ logo.width }}"
+      height="{{ logo.height }}"
+      alt="{{ site.name }}"
+      fetchpriority="high">
+  {% else %}
+    <span class="h3">{{ site.name }}</span>
+  {% endif %}
+</a>

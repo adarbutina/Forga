@@ -1,0 +1,13 @@
+<flynt-component name="NavigationBreadcrumb">
+  <div class="container">
+    <nav aria-label="{{ labels.navigationAriaLabel|e }}">
+      <ul class="breadcrumb">
+        {% for item in items %}
+          <li class="breadcrumb-item">
+            <a class="breadcrumb-link" href="{{ item.link|e('esc_url') }}">{{ item.title }}</a>
+          </li>
+        {% endfor %}
+      </ul>
+    </nav>
+  </div>
+</flynt-component>

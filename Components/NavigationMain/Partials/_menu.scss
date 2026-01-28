@@ -1,0 +1,17 @@
+.menu {
+  align-items: center;
+  display: flex;
+  list-style: none;
+
+  &-item {
+    font-size: var(--font-size-body-small);
+    margin-inline-start: var(--flow-space);
+  }
+
+  &-link {
+    color: currentColor;
+    display: inline-block;
+    padding-block: .5rem;
+    text-decoration: none;
+  }
+}

@@ -1,0 +1,29 @@
+.socialPlatforms {
+  display: flex;
+  flex-wrap: wrap;
+  list-style: none;
+
+  @media (min-width: $breakpoint-tablet-horizontal) {
+    justify-content: flex-end;
+  }
+
+  &-item {
+    margin-block-start: 0;
+
+    &:not(:last-child) {
+      margin-inline-end: var(--flow-space);
+    }
+  }
+
+  &-link {
+    color: currentColor;
+    display: inline-flex;
+    text-decoration: none;
+  }
+
+  svg {
+    block-size: 1.25rem;
+    inline-size: 1.25rem;
+  }
+}
+

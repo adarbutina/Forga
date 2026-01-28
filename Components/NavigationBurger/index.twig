@@ -1,0 +1,11 @@
+<flynt-component name="NavigationBurger" load:on="idle" load:on:media="(max-width: 1023px)">
+  <nav aria-label="{{ labels.navigationAriaLabel }}">
+    <div class="container">
+      {% include 'Partials/_burger.twig' with {labels: labels} only %}
+      {% include 'Partials/_logo.twig' with {logo: logo, site: site} only %}
+    </div>
+    <div popover="auto" class="popover" id="navigationBurger-popover" data-ref="popover">
+      {% include 'Partials/_menu.twig' with {items: menu.items} %}
+    </div>
+  </nav>
+</flynt-component>

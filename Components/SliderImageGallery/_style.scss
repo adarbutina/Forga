@@ -1,0 +1,56 @@
+flynt-component[name='SliderImageGallery'] {
+  --image-aspect-ratio: 3 / 2;
+
+  .sliderMain {
+    overflow: hidden;
+    position: relative;
+
+    .swiper-wrapper {
+      display: flex;
+      list-style: none;
+    }
+
+    &-slide {
+      flex-shrink: 0;
+      inline-size: 100%;
+    }
+  }
+
+  .sliderThumb {
+    display: none;
+
+    @media (min-width: $breakpoint-tablet-horizontal) {
+      display: block;
+      margin-block-start: .5rem;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .swiper-wrapper {
+      display: flex;
+      flex-wrap: wrap;
+      gap: .5rem;
+      list-style: none;
+    }
+
+    &-slide {
+      cursor: pointer;
+    }
+  }
+
+  .figure {
+    aspect-ratio: var(--image-aspect-ratio);
+    block-size: auto;
+    inline-size: 100%;
+    overflow: hidden;
+
+    &-image {
+      block-size: 100%;
+      inline-size: 100%;
+      object-fit: cover;
+    }
+  }
+
+  @import 'Partials/navigation';
+  @import 'Partials/pagination';
+}

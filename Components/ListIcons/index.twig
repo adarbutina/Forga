@@ -1,0 +1,40 @@
+<flynt-component name="ListIcons" {{- not options.noComponentSpacing ? ' class="componentSpacing"' }} {{- options.theme ? ' data-theme=' ~ options.theme }}>
+  <div class="container" data-flow="layout">
+    {% if preContentHtml %}
+      <div class="preContent" data-size="{{ options.contentSize }}" data-align="{{ options.contentAlign }}">
+        {{ preContentHtml|e('wp_kses_post') }}
+      </div>
+    {% endif %}
+    <ul class="list" {{- options.iconSize ? ' data-icon-size=' ~ options.iconSize }} data-max-columns="{{ options.maxColumns }}" {{- options.showAsCard ? ' data-card="true"' }}>
+      {% for item in items %}
+        <li class="list__item {{- options.showAsCard ? ' boxPadding' }}">
+          {% if item.link %}
+            <a class="list__link" href="{{ item.link.url|e('esc_url') }}" {{- item.link.is_target_blank ? ' target="_blank" rel="noopener noreferrer"' -}}></a>
+          {% endif %}
+          {% if item.image %}
+            <figure class="list__figure">
+              {% if item.image.post_mime_type == 'image/svg+xml' %}
+                {{ function('file_get_contents', item.image.path) | raw }}
+              {% else %}
+                <img class="list__figure-image lazyload"
+                    src="{{ item.image.src|resizeDynamic(120) }}"
+                    width="{{ item.image.width }}"
+                    height="{{ item.image.height }}"
+                    srcset="{{ placeholderImage(item.image.width, item.image.height, 'rgba(125, 125, 125, 0.1)') }}"
+                    data-srcset="
+                      {{ item.image.src|resizeDynamic(240) }} 240w"
+                    data-sizes="auto"
+                    alt="{{ item.image.alt|e }}">
+              {% endif %}
+            </figure>
+          {% endif %}
+          {% if item.contentHtml %}
+            <div class="list__content">
+              {{ item.contentHtml|e('wp_kses_post') }}
+            </div>
+          {% endif %}
+        </li>
+      {% endfor %}
+    </ul>
+  </div>
+</flynt-component>

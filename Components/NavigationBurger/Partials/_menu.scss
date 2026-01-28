@@ -1,0 +1,21 @@
+.menu {
+  display: flex;
+  flex-direction: column;
+  list-style: none;
+
+  &-item {
+    padding-block: .25rem;
+  }
+
+  &-link {
+    color: currentColor;
+    display: block;
+    font-size: 1.25rem;
+    padding-block: .5rem;
+    text-decoration: none;
+  }
+
+  &-children {
+    list-style: none;
+  }
+}

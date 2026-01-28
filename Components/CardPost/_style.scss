@@ -1,0 +1,23 @@
+flynt-component[name='CardPost'] {
+  .link {
+    color: currentColor;
+    text-decoration: none;
+  }
+
+  .figure {
+    block-size: auto;
+    inline-size: 100%;
+    overflow: hidden;
+
+    &-image {
+      block-size: 100%;
+      inline-size: 100%;
+      object-fit: cover;
+    }
+  }
+
+  .excerpt {
+    font-size: var(--font-size-body-small);
+    margin-block-start: calc(var(--flow-space) / 2);
+  }
+}

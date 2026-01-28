@@ -1,0 +1,20 @@
+flynt-component[name='NavigationMain'] {
+  --navigation-height: 4rem;
+  display: none;
+
+  @media (min-width: $breakpoint-tablet-horizontal) {
+    background-color: var(--color-background);
+    border-block-end: 1px solid var(--color-border);
+    display: block;
+  }
+
+  .container {
+    align-items: center;
+    block-size: var(--navigation-height);
+    display: flex;
+    justify-content: space-between;
+  }
+
+  @import 'Partials/logo';
+  @import 'Partials/menu';
+}

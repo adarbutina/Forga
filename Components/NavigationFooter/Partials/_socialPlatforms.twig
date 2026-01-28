@@ -1,0 +1,9 @@
+<ul class="socialPlatforms" aria-label="{{ labels.socialPlatformsAriaLabel }}">
+  {% for item in items %}
+    <li class="socialPlatforms-item">
+      <a class="socialPlatforms-link" href="{{ item.url|e('esc_url') }}" target="_blank" rel="noopener noreferrer" aria-label="{{ item.platform.label }}">
+        <i class="icon icon-{{ item.platform.label|lower }}"></i>
+      </a>
+    </li>
+  {% endfor %}
+</ul>

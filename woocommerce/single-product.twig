@@ -1,0 +1,20 @@
+{% extends 'templates/_document.twig' %}
+
+{% block content %}
+  {% do action('woocommerce_before_main_content') %}
+  {% do action('woocommerce_before_single_product') %}
+
+  <article itemscope itemtype="https://schema.org/Product" class="wc-block-product-content has-global-padding" data-size="wide" data-align="center">
+    {% do action('woocommerce_before_single_product_summary') %}
+
+    <div class="summary entry-summary">
+      {% do action('woocommerce_single_product_summary') %}
+    </div>
+
+    {% do action('woocommerce_after_single_product_summary') %}
+  </article>
+
+  {% do action('woocommerce_after_single_product') %}
+  {% do action('woocommerce_after_main_content') %}
+  {% do action('woocommerce_sidebar') %}
+{% endblock %}

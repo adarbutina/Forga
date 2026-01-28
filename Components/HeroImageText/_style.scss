@@ -1,0 +1,36 @@
+flynt-component[name='HeroImageText'] {
+  @import 'mixins';
+  @include align-image('mobile');
+
+  @media (min-width: $breakpoint-tablet) {
+    @include align-image('desktop');
+  }
+
+  .container {
+    --min-block-size: var(--min-block-size-mobile);
+    align-items: center;
+    display: flex;
+    min-block-size: var(--min-block-size);
+
+    @media (min-width: $breakpoint-tablet) {
+      --min-block-size: var(--min-block-size-desktop);
+    }
+  }
+
+  .picture {
+    block-size: 100%;
+    inline-size: 100%;
+    inset: 0;
+    position: absolute;
+
+    &-image {
+      block-size: 100%;
+      inline-size: 100%;
+      object-fit: cover;
+    }
+  }
+
+  .content {
+    position: relative;
+  }
+}

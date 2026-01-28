@@ -1,0 +1,23 @@
+flynt-component[name='NavigationFooter'] {
+  font-size: var(--font-size-body-smaller);
+
+  .container {
+    align-items: center;
+    display: flex;
+    flex-direction: column-reverse;
+    gap: var(--box-spacing);
+    padding-block: var(--flow-space);
+
+    @media (min-width: $breakpoint-tablet-horizontal) {
+      flex-direction: row;
+      justify-content: space-between;
+    }
+
+    > * {
+      margin-block-start: 0;
+    }
+  }
+
+  @import 'Partials/menu';
+  @import 'Partials/socialPlatforms';
+}

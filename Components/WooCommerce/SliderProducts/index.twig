@@ -1,0 +1,26 @@
+<flynt-component name="SliderProducts" load:on="visible" {{- not options.noComponentSpacing ? ' class="componentSpacing"' }} {{- options.theme ? ' data-theme=' ~ options.theme }} data-max-columns="{{ options.maxColumns }}">
+  <div class="container" data-flow="content">
+    {% if preContentHtml %}
+      <div class="preContent" data-size="wide">
+        {{ preContentHtml|e('wp_kses_post') }}
+      </div>
+    {% endif %}
+    {% if posts|length > 0 %}
+      <div class="swiper-container slider" data-ref="slider">
+        <ul class="swiper-wrapper">
+          {% for post in posts %}
+            <li class="swiper-slide slider-slide">
+              {{ renderComponent('CardProduct', {post: post}) }}
+            </li>
+          {% endfor %}
+        </ul>
+        <button type="button" class="slider-button slider-button--prev" data-ref="prev" aria-label="{{ labels.prevSlideMessage|e }}">
+          <i class="icon icon-chevron-left" aria-hidden="true"></i>
+        </button>
+        <button type="button" class="slider-button slider-button--next" data-ref="next" aria-label="{{ labels.nextSlideMessage|e }}">
+          <i class="icon icon-chevron-right" aria-hidden="true"></i>
+        </button>
+      </div>
+    {% endif %}
+  </div>
+</flynt-component>

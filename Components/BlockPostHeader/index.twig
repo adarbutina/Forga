@@ -1,0 +1,13 @@
+<flynt-component name="BlockPostHeader" class="componentSpacing" {{- options.theme ? ' data-theme=' ~ options.theme }}>
+  <div class="container">
+    <div class="content" data-size="narrow" data-align="center">
+      <h1 class="title">{{ post.title }}</h1>
+      {% if post.post_excerpt %}
+        <p class="excerpt">{{ post.post_excerpt }}</p>
+      {% endif %}
+    </div>
+  </div>
+  {% if post.thumbnail and post.thumbnail.src %}
+    {{ renderComponent('BlockImage', {image: post.thumbnail, options: {size: 'wide', align: 'center', noComponentSpacing: true}}) }}
+  {% endif %}
+</flynt-component>

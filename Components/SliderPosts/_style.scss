@@ -1,0 +1,70 @@
+flynt-component[name='SliderPosts'] {
+  --slider-columns: 1;
+
+  &[data-max-columns='2'],
+  &[data-max-columns='3'],
+  &[data-max-columns='4'] {
+    @media (min-width: $breakpoint-tablet) {
+      --slider-columns: 2;
+    }
+  }
+
+  &[data-max-columns='3'],
+  &[data-max-columns='4'] {
+    @media (min-width: $breakpoint-tablet-horizontal) {
+      --slider-columns: 3;
+    }
+  }
+
+  &[data-max-columns='4'] {
+    @media (min-width: $breakpoint-desktop) {
+      --slider-columns: 4;
+    }
+  }
+
+  .slider {
+    overflow: hidden;
+    position: relative;
+
+    .swiper-wrapper {
+      display: flex;
+      list-style: none;
+    }
+
+    &-slide {
+      flex: 0 0 calc((100% - var(--flow-space) * (var(--slider-columns) - 1)) / var(--slider-columns));
+
+      &:not(:last-child) {
+        margin-inline-end: var(--flow-space);
+      }
+    }
+
+    &-button {
+      align-items: center;
+      background-color: hsl(0, 0%, 100%);
+      block-size: 3rem;
+      border-radius: 9999px;
+      cursor: pointer;
+      display: flex;
+      inline-size: 3rem;
+      inset-block-start: 50%;
+      justify-content: center;
+      margin-block-start: 0;
+      position: absolute;
+      translate: (0 -50%);
+      z-index: 10;
+
+      &.swiper-button-disabled {
+        visibility: hidden;
+      }
+
+      &--prev {
+        inset-inline-start: var(--flow-space);
+      }
+
+      &--next {
+        inset-inline-end: var(--flow-space);
+      }
+    }
+  }
+}

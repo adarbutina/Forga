@@ -1,0 +1,45 @@
+flynt-component[name='CardProduct'] {
+  .link {
+    color: currentColor;
+    text-decoration: none;
+  }
+
+  .figure {
+    aspect-ratio: 3 / 2;
+    block-size: auto;
+    inline-size: 100%;
+    overflow: hidden;
+
+    &-image {
+      block-size: 100%;
+      inline-size: 100%;
+      object-fit: cover;
+    }
+  }
+
+  .content {
+    margin-block-start: calc(var(--flow-space) / 2);
+  }
+
+  .title {
+    font-size: var(--font-size-body-small);
+  }
+
+  .price {
+    font-size: var(--font-size-body-small);
+    word-break: break-word;
+
+    del {
+      color: var(--color-text-muted);
+      display: block;
+      font-size: var(--font-size-body-smaller);
+    }
+
+    ins {
+      color: var(--color-danger);
+      display: block;
+      font-weight: 500;
+      text-decoration: none;
+    }
+  }
+}

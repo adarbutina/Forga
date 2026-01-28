@@ -1,0 +1,29 @@
+flynt-component[name='NavigationBreadcrumb'] {
+  font-size: var(--font-size-body-smaller);
+  padding-block: 1rem;
+
+  .breadcrumb {
+    display: flex;
+    flex-wrap: wrap;
+    list-style: none;
+
+    &-item {
+      align-items: center;
+      display: flex;
+      gap: .375rem;
+
+      &:not(:last-child) {
+        margin-inline-end: .375rem;
+
+        &::after {
+          content: '/';
+        }
+      }
+    }
+
+    &-link {
+      color: currentColor;
+      text-decoration: none;
+    }
+  }
+}

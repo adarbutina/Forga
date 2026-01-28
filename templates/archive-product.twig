@@ -1,0 +1,10 @@
+{% extends 'templates/_document.twig' %}
+
+{% block content %}
+  {% do action('woocommerce_before_main_content') %}
+
+  {{ renderComponent('GridProductsArchive') }}
+
+  {% do action('woocommerce_after_main_content') %}
+  {% do action('woocommerce_sidebar') %}
+{% endblock %}

@@ -1,0 +1,29 @@
+<flynt-component name="GridImageText" {{- not options.noComponentSpacing ? ' class="componentSpacing"' }} {{- options.theme ? ' data-theme=' ~ options.theme }}>
+  <div class="container" data-flow="layout">
+    {% if preContentHtml %}
+      <div class="preContent">
+        {{ preContentHtml|e('wp_kses_post') }}
+      </div>
+    {% endif %}
+    <ul class="grid" data-max-columns="{{ options.maxColumns }}">
+      {% for item in items %}
+        <li class="grid-item {{- options.card ? ' boxPadding' }}" {{- item.options.theme ? ' data-theme=' ~ item.options.theme }}>
+          {% if item.image and item.image.src %}
+            <figure class="grid-figure">
+              <img
+                class="grid-figure-image lazyload"
+                src="{{ placeholderImage(item.image.width, item.image.height, 'rgba(125, 125, 125, 0.1)') }}"
+                data-src="{{ item.image.src|towebp }}"
+                width="{{ item.image.width }}"
+                height="{{ item.image.height }}"
+                alt="{{ item.image.alt }}">
+            </figure>
+          {% endif %}
+          <div class="grid-content">
+            {{ item.contentHtml|e('wp_kses_post') }}
+          </div>
+        </li>
+      {% endfor %}
+    </ul>
+  </div>
+</flynt-component>

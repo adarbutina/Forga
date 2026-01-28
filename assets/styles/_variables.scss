@@ -1,0 +1,44 @@
+:root,
+[data-theme='reset'] {
+  --color-accent: hsla(212, 100%, 45%, 1);
+  --color-background: hsl(0, 0%, 100%);
+  --color-background-secondary: hsl(0, 0%, 97.5%);
+  --color-border: hsl(0, 0%, 95%);
+  --color-text: hsl(0, 0%, 10%);
+  --color-text-muted: hsl(0, 0%, 50%);
+  --color-danger: #e20015;
+  --color-warning: #f6a800;
+}
+
+[data-theme='light'] {
+  --color-accent: hsla(212, 100%, 45%, 1);
+  --color-background: hsl(0, 0%, 97.5%);
+}
+
+[data-theme='dark'] {
+  --color-accent: #fb8b8a;
+  --color-background: hsl(0, 0%, 0%);
+  --color-border: hsl(0, 0%, 100%, 10%);
+  --color-text: hsl(0, 0%, 100%);
+}
+
+$breakpoint-mobile-horizontal: 640px;
+$breakpoint-tablet: 768px;
+$breakpoint-tablet-horizontal: 1024px;
+$breakpoint-desktop: 1280px;
+
+:root {
+  --font-family-body: 'Noto Sans';
+  --font-size-body: 1rem;
+  --font-size-body-small: .875rem;
+  --font-size-body-smaller: .75rem;
+  --flow-space: 1.5rem;
+  --column-gap: clamp(.75rem, 2.5vw, 1.5rem);
+
+  --content-max-width: 720px;
+  --content-max-width-wide: 1440px;
+
+  --box-spacing: clamp(1.5rem, 2.5vw, 2rem);
+  --container-spacing: clamp(1.5rem, 5vw, 3rem);
+  --component-spacing: clamp(4rem, 10svw, 6rem);
+}
